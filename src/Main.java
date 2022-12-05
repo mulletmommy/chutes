@@ -1,4 +1,6 @@
+import java.util.Scanner;
 public class Main {
+
     public static void main(String[] args) {
         int place = 0;
         while(place !=100)
