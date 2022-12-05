@@ -36,34 +36,30 @@ public class Ladders {
         return frue;
     }
 
-    public int (boolean x){
+    public int jeasoi(boolean x, int z){
         if(x = true){
             if(z == 4){
-                frue = true;
+                z = 25;
             }
             if(z == 13){
-                frue = true;
+                z = 46;
             }
             if(z == 50){
-                frue = true;
+                z = 69;
             }
             if(z == 33){
-                frue = true;
+                z = 49;
             }
             if(z == 42){
-                frue = true;
+                z = 63;
             }
             if(z == 62){
-                frue = true;
+                z = 81;
             }
             if(z == 74){
-                frue = true;
-            }
-            else{
-                frue = false;
+                z = 92;
             }
         }
-
     }
 
 }
