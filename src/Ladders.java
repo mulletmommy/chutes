@@ -1,13 +1,5 @@
 public class Ladders {
 
-    private int [][] mat;
-    private boolean frue;
-
-    public Ladders(){
-        mat = new int[10][10];
-
-    }
-
     public static void hitit(int z){
         if(z == 4){
             z = 25;
