@@ -3,7 +3,10 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        int x = 0;
+
+        BackgroundRunner run = new BackgroundRunner();
+
+
         Scanner myObj = new Scanner(System.in);  // Create a Scanner object
         System.out.println("How many players will there be?");
 
