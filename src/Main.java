@@ -2,65 +2,85 @@ import java.util.Scanner;
 import java.util.ArrayList;
 public class Main {
 
-    public static void main(String[] args) {
-
-        BackgroundRunner run = new BackgroundRunner();
+    private ArrayList<players> play;
 
 
-        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-        System.out.println("How many players will there be?");
-
-        int amount = myObj.nextInt();  // Read user input
-        System.out.println("There is " + amount + " Players playing");  // Output user input
+    public Main(){
+        play = new ArrayList<players>();
 
 
-        ArrayList<Integer> places = new ArrayList<Integer>();
-        for(int n = 0;n<amount;n++)
-            places.add(0);
-        while(!(places.contains(100))) {
-            for(int n = 0;n<amount;n++) {
-                move(places.get(n));
-                hitit(places.get(n));
+    }
+
+
+    public void addPlayers() {
+        Scanner keyboard = new Scanner( System.in );
+        System.out.println("How many players are playing? "); //Get the 2 player version to work
+        int numOfPlayers = keyboard.nextInt(); // gets an int
+        for( int x = 1; x <= numOfPlayers; x++)
+        {
+            System.out.println("Type player #" + x + "'s name:: " );
+            String name = keyboard.next();//gets a String
+            // add each new player to the list
+            play.add(new players(name));
+        }
+
+    }
+
+    public void turn(players a) {
+        Scanner keyboard = new Scanner( System.in );
+        System.out.println(a.getName() + " Please Press R to roll the dice to determine if you're gay");
+        String b = keyboard.next();
+        if(b.equals("r") || b.equals("R")) {
+            int Dice = (int)(Math.random()*7);
+            a.editsum(Dice);
+            System.out.println("You have rolled a motherfucking " + Dice + ".");
+
+            if(a.checkvicotry() == true) {
+                System.out.println("You have won!!!");
             }
-        }
-    }
+            else if (a.checksum() == true) {
+                System.out.println("You have rolled to a " + a.returnsum()+ " so you're still at the same place");
+                a.changesum();
+            }
+            else if(a.onladder() == true) {
+                a.upaway();
+                System.out.println("You have rolled to a ladder so you're moving up to" + a.returnsum());
+            }
+            else if(a.onsnake() == true) {
+                a.downto();
+                System.out.println("You have rolled to a snake so you're moving down to" + a.returnsum());
+            }
 
-    public static int move(int sum) {
-        int dice = (int)(Math.random()*7);
-        if(sum+dice<=100)
-            return sum + dice;
-        else
-          System.out.println("You need an exact roll to win!");
-        return 0;
+            else {
+                System.out.println("You have moved to spot " + a.returnsum());
+            }
 
-    }
+            System.out.println("Press w & then enter if you're wondering about placement");
 
 
-    public static void hitit(int z){
-        if(z == 4){
-            z = 25;
+
         }
-        if(z == 13){
-            z = 46;
-        }
-        if(z == 50){
-            z = 69;
-        }
-        if(z == 33){
-            z = 49;
-        }
-        if(z == 42){
-            z = 63;
-        }
-        if(z == 62){
-            z = 81;
-        }
-        if(z == 74){
-            z = 92;
-        }
+
 
     }
 
+    public void playgame() {
+        addPlayers();
+        int sum = 0;
+        while(sum <100) {
+            turn(play.get(0));
+        }
 
+
+
+    }
+
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+    Main one = new Main();
+    one.playgame();
+
+    }
 
 }
