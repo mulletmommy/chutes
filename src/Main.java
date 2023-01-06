@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Main {
 
     private ArrayList<players> play;
+    private int sum;
 
 
     public Main(){
         play = new ArrayList<players>();
+        sum = 0;
 
 
     }
@@ -44,7 +46,7 @@ public class Main {
             }
             else if(a.onladder() == true) {
                 a.upaway();
-                System.out.println("You have rolled to a ladder so you're moving up to" + a.returnsum());
+                System.out.println("You have rolled to a ladder so you're moving up to " + a.returnsum());
             }
             else if(a.onsnake() == true) {
                 a.downto();
@@ -54,8 +56,18 @@ public class Main {
             else {
                 System.out.println("You have moved to spot " + a.returnsum());
             }
-
+            for(int x = 0; x < play.size(); x++){
+                if (play.get(x).returnsum() > sum){
+                    sum = play.get(x).returnsum();
+                } ghjghj
+            }
             System.out.println("Press w & then enter if you're wondering about placement");
+            String w = keyboard.next();
+            if(w.equals("w")){
+                for (int x = 0; x < play.size(); x++){
+                    int
+                }
+            }
 
 
 
@@ -66,7 +78,6 @@ public class Main {
 
     public void playgame() {
         addPlayers();
-        int sum = 0;
         while(sum <100) {
             turn(play.get(0));
         }
